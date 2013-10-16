@@ -1,6 +1,6 @@
 require 'mongo'
 require 'twitter'
-require 'config'
+require_relative 'config'
 
 class TweetArchiver
   def initialize(tag)
@@ -24,7 +24,7 @@ class TweetArchiver
   private
 
     def save_tweets_for(term)
-      Twitter::Search.new(term).each do |tweet|
+      Twitter.search(term).each do |tweet|
         @tweets_found += 1
         tweet_with_tag = tweet.to_hash.merge!({"tags" => [term]})
         @tweets.save(tweet_with_tag)
