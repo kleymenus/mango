@@ -22,7 +22,6 @@
   <% end %>
 
   <% @tweets.each do |tweet| %>
-
     <h2><%= tweet['text'] %></h2>
     <p>
       <a href="https://twitter.com/<%= tweet['user']['screen_name'] %>">
