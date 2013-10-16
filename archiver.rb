@@ -25,9 +25,11 @@ class TweetArchiver
 
     def save_tweets_for(term)
       Twitter.search(term).results.each do |tweet|
-        @tweets_found += 1
         tweet_with_tag = tweet.to_hash.merge!({"tags" => [term]})
-        @tweets.save(tweet_with_tag)
+         unless @tweets.find_one("id" => tweet_with_tag[:id])
+           @tweets.save(tweet_with_tag)
+           @tweets_found += 1
+         end
       end
     end
 
