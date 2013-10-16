@@ -23,11 +23,12 @@
 
   <% @tweets.each do |tweet| %>
     <h2><%= tweet['text'] %></h2>
+
     <p>
       <a href="https://twitter.com/<%= tweet['user']['screen_name'] %>">
         <%= tweet['user']['name'] %>
       </a>
-      от <%= tweet['created_at'] %>
+      от <%= Time.parse(tweet['created_at']).strftime(" %d.%m.%Y  %H:%M") %>
     </p>
 
     <img src="<%= tweet['user']['profile_image_url'] %>" width="48" />
