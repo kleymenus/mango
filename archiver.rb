@@ -16,9 +16,11 @@ class TweetArchiver
   end
 
   def update
-    puts "Запускается поиск в Twitter для `#{@tag}`..."
+    #puts "Запускается поиск в Twitter для `#{@tag}`..."
+    print "#{@tag}: "
     save_tweets_for(@tag)
-    print "Сохранено твитов: #{@tweets_found}. \n\n"
+    #print "Сохранено твитов: #{@tweets_found}. \n\n"
+    print "#{@tweets_found}, "
   end
 
   private
